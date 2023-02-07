@@ -37,14 +37,14 @@ public class SimpleStack<T>
     // public object Pop() => _items[_count--];
     
     
-    private readonly T[] _items;
-    private int _count = -1;
-    
-    public SimpleStack() => _items = new T[10];
-    
-    public void Push(T x) => _items[++_count] = x;
-    
-    public int Count() => _count+1;
-    
-    public T Pop() => _items[_count--];
+    // private readonly T[] _items;
+    // private int _count = -1;
+    //
+    // public SimpleStack() => _items = new T[10];
+    //
+    // public void Push(T x) => _items[++_count] = x;
+    //
+    // public int Count() => _count+1;
+    //
+    // public T Pop() => _items[_count--];
 }
