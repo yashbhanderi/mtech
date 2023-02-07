@@ -4,7 +4,11 @@
 //     {
 //         public static void Main()
 //         {
-//             Console.Write("Hello Yash, Good Morning!");
+//             string name;
+//             Console.WriteLine("Enter your name");
+//             name = Console.ReadLine();
+//             
+//             Console.Write("Good Morning, " + name);
 //         }
 //     }
 // }
