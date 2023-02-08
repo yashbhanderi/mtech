@@ -1,4 +1,4 @@
-namespace generics.Entites;
+namespace Rider.C_.Generics.Entities;
 
 public class Organization : EntityBase
 {

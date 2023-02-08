@@ -1,9 +1,13 @@
-using generics.Entites;
+using Rider.C_.Generics.Entities;
 
-namespace generics;
+namespace Rider.C_.Generics.StorageApp;
 
 // public class StorageAppGeneric<T>
-public class StorageAppGeneric<T> where T : EntityBase
+
+// Here... Interface <--- CAN BE BOTH...Value type and Ref type
+// SOOO...... We can't return NULL values
+// So.. We have to add class before interface  NOWWWWW !!!! It is ref type
+public class StorageAppGeneric<T> where T : class, IEntity
 {
     // private readonly List<T> _items = new();
     protected readonly List<T> _items = new();
@@ -14,7 +18,7 @@ public class StorageAppGeneric<T> where T : EntityBase
         _items.Add(item);
     }
 
-    public T GetById(int id)
+    public T? GetById(int id)
     {
         // Here.. item => item.  <-- Get only four methods.. Bcz It is of type Generic 
         // But If we want to access Properties of the class
@@ -22,7 +26,8 @@ public class StorageAppGeneric<T> where T : EntityBase
         
         // Single = Return only item satisfing condition
         // If more than one found <-- Gives error
-        return _items.Single(item => item._id == id);
+        // return _items.Single(item => item._id == id);
+        return null;
     }
 
     public void Save()
@@ -47,13 +52,14 @@ public class StorageAppGenericWithRemove<T> : StorageAppGeneric<T> where T : Ent
         // First we are finding index of a item containg param item
         // Then removing it
         // int index = _items.FindIndex(emp => emp.ToString().Contains(item));
+        Console.WriteLine("Remove: "+item._id);
+        _items.Remove(item);
         
-        // _items.Remove(_items[index]);
         // _items.RemoveAt(index);
         
         // This will find index of item given by parameter in the _items list
-        int index = _items.FindIndex(emp => item.ToString().Equals(emp.ToString()));
-        _items.RemoveAt(index);
+        // int index = _items.FindIndex(emp => item.ToString().Equals(emp.ToString()));
+        // _items.RemoveAt(index);
     }
 }
 
