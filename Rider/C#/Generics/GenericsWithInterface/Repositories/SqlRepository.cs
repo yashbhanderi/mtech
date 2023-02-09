@@ -18,6 +18,11 @@ namespace Rider.C_.Generics.GenericsWithInterface.Repositories
             _dbSet = _dbContext.Set<T>();
         }
 
+        public IEnumerable<T> GetAll()
+        {
+            return _dbSet.ToList();
+        }
+
         public void Add(T item)
         {
             
