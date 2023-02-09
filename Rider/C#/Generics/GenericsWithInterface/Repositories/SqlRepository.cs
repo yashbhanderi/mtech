@@ -3,11 +3,19 @@ using Rider.C_.Generics.Entities;
 
 namespace Rider.C_.Generics.GenericsWithInterface.Repositories
 {
+    
+    
+    // Delegate with generic type
+    // If in <---- MUST VOID type
+    
+    
+    // public delegate void ItemAdded<T>(T item);
     public class SqlRepository<T> : IRepository<T> where T : class, IEntity
     {
         
         private readonly DbContext _dbContext;
-        
+        // private readonly ItemAdded<T>? _itemAddedCallback;
+
         // T must be reference type to use DbSet
         // That's why we used class with IEntity
         private readonly DbSet<T> _dbSet;
@@ -15,8 +23,15 @@ namespace Rider.C_.Generics.GenericsWithInterface.Repositories
         public SqlRepository(DbContext dbContext)
         {
             _dbContext = dbContext;
+            
+            // ➡️ itemAddedCallback <=> EmployeeAdd(object item) in Program.cs
+            // _itemAddedCallback = itemAddedCallback;       
             _dbSet = _dbContext.Set<T>();
         }
+        
+        // public event Action<T>? ItemAdded;
+        public event EventHandler<T>? ItemAdded;
+
 
         public IEnumerable<T> GetAll()
         {
@@ -30,6 +45,8 @@ namespace Rider.C_.Generics.GenericsWithInterface.Repositories
             // Console.WriteLine(item.ToString());
             _dbSet.Add(item);
             _dbContext.SaveChanges();
+            // _itemAddedCallback.Invoke(item);
+            ItemAdded!.Invoke(this, item);
         }
 
         public T? GetById(int id)

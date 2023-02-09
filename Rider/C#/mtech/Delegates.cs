@@ -2,6 +2,8 @@
 //  
 // namespace mtech
 //  
+
+// Delegate -----------> Call back function in Javascript
 // {
 //     class Delegates {
 //

@@ -9,9 +9,19 @@ public class StorageApp
 
     public static void Main(string[] args)
     {
+        // var itemAdded = new ItemAdded<Employee>(EmployeeAdded);
+        // var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext(), EmployeeAdded);      <--- Direct send
+        // var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext(), itemAdded);
+        
+        // employeeRepository.ItemAdded += EmployeeAdded;   <--- Event with Action Delegate
+        
         var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext());
+        employeeRepository.ItemAdded += employeeRepository_ItemAdded;
         AddEmployee(employeeRepository);
-    
+        
+        // Contravariance <- in keyword        
+        // ItemAdded<Manager> managerDel = itemAdded;
+
         // Can't Possible
         // Child c = new Base(); ❌
         // Base b = new Child(); 👍
@@ -26,14 +36,23 @@ public class StorageApp
         // SOOO... To Bypass this..Contravariance is used !!!!
         
         
-        AddManagers(employeeRepository);
+        // AddManagers(employeeRepository);
         // WriteAllConsole(employeeRepository);    
         
         var organizationRepository = new ListRepository<Organization>();
-        AddOrganization(organizationRepository);
+        // AddOrganization(organizationRepository);
         // WriteAllConsole(organizationRepository);
 
     }
+
+    private static void employeeRepository_ItemAdded(object? sender, Employee e)
+    {
+        Console.WriteLine($"Success !!!  {e._name} is added");
+    }
+
+    // private static void EmployeeAdded(Employee item)     <--- Delegate Example
+    // {
+    // }
 
 
     // Generic Type Params are by def -----------> Coveriant Type <----------------------
@@ -61,9 +80,21 @@ public class StorageApp
     
     private static void AddManagers(IWriteRepository<Manager> managerRepository)
     {
+        var manager = new Manager() { _name = "MS Dhoni" };
+        var managerCopy = manager.Copy();
+        managerRepository.Add(manager);
+
+        if (managerCopy is not null)
+        {
+            managerCopy._name += " | Copy";
+            managerRepository.Add(managerCopy);
+        }
+        
         managerRepository.Add(new Manager() {_name = "Tony Stark"});
         managerRepository.Add(new Manager() {_name = "Peter Parker"});
         managerRepository.Add(new Manager() {_name = "Bruce Wayne"});
+        
+        managerRepository.Save();
     }
 
     private static void AddEmployee(SqlRepository<Employee> employeeRepository)
