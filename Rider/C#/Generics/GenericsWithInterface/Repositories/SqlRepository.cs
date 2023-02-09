@@ -20,6 +20,7 @@ namespace Rider.C_.Generics.GenericsWithInterface.Repositories
 
         public IEnumerable<T> GetAll()
         {
+            // return _dbSet.ToList();
             return _dbSet.ToList();
         }
 
