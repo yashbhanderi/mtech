@@ -27,11 +27,11 @@ public class StorageApp
         
         
         AddManagers(employeeRepository);
-        WriteAllConsole(employeeRepository);    
+        // WriteAllConsole(employeeRepository);    
         
         var organizationRepository = new ListRepository<Organization>();
         AddOrganization(organizationRepository);
-        WriteAllConsole(organizationRepository);
+        // WriteAllConsole(organizationRepository);
 
     }
 
@@ -68,18 +68,44 @@ public class StorageApp
 
     private static void AddEmployee(SqlRepository<Employee> employeeRepository)
     {
-        employeeRepository.Add(new Employee{_name = "Yash Bhanderi"});
-        employeeRepository.Add(new Employee{_name = "John Doe"});
-        employeeRepository.Add(new Employee{_name = "Mark Tailor"});
+        var employeeArr = new Employee[]
+        {
+            new Employee { _name = "Yash Bhanderi" }, 
+            new Employee { _name = "John Doe" },
+            new Employee { _name = "Mark Tailor" }
+        };
+        
+        // ➡️ Generic Methods
+        // AddBatch<Employee>(employeeRepository, employeeArr);
+        // AddBatch(employeeRepository, employeeArr);
+        
+        // ➡️ Generic Extension Methods
+        
+        employeeRepository.AddBatch(employeeArr);
+            
+        // employeeRepository.Add(new Employee{_name = "Yash Bhanderi"});
+        // employeeRepository.Add(new Employee{_name = "John Doe"});
+        // employeeRepository.Add(new Employee{_name = "Mark Tailor"});
         // employeeRepository.GetById(2);
         // employeeRepository.Save();
     }
     
     private static void AddOrganization(ListRepository<Organization> organizationRepository)
     {
-        organizationRepository.Add(new Organization{_name = "Google"});
-        organizationRepository.Add(new Organization{_name = "Microsoft"});
-        organizationRepository.Add(new Organization{_name = "Apple"});
+        var organizationArr = new Organization[]
+        {
+            new Organization { _name = "Google" },
+            new Organization { _name = "Microsoft" },
+            new Organization { _name = "Apple" }
+        };
+        organizationRepository.AddBatch(organizationArr);
+        // AddBatch(organizationRepository, organizationArr);
+        // organizationRepository.Add(new Organization{_name = "Google"});
+        // organizationRepository.Add(new Organization{_name = "Microsoft"});
+        // organizationRepository.Add(new Organization{_name = "Apple"});
         // organizationRepository.Save();
     }
+
+    // private static void AddBatch<T>(IRepository<T> repository, T[] arr) where T : IEntity  <--- Where is compulsary if I do not specify interface
+
 }

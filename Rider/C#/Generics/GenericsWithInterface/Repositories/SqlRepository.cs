@@ -49,10 +49,10 @@ namespace Rider.C_.Generics.GenericsWithInterface.Repositories
         public void Save()
         {
             // Console.WriteLine(_dbSet.Count());
-            // foreach (var item in _dbSet)
-            // {
-            //     Console.WriteLine(item.ToString());
-            // }
+            foreach (var item in _dbSet)
+            {
+                Console.WriteLine(item.ToString());
+            }
             // _dbContext.SaveChanges();
         }
     }
