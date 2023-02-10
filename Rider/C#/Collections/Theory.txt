@@ -1,0 +1,28 @@
+
+Collection = Dynamic Array
+
+What was the problem with the array ?
+int[] arr = new int[10];
+
+-> Length is fixed
+-> Inserting values in the middle 
+-> Deleting or Removing values in the middle
+
+Non-Generic Collections:    Stack, Queue, LinkedList, SortedList, ArrayList, Hashtable
+    
+    ArrayList, Hashtable
+-> They're not type safe
+-> we can enter any type of values
+
+-> SOOOO... We want
+Array - Can't change Fixed size
+Hashtable - No type safety
+We want solution for both
+
+--> Generic Collections
+System.Collections.Generic;
+
+List, Dictionary
+
+
+
