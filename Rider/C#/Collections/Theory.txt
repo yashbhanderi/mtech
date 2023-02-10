@@ -22,7 +22,11 @@ We want solution for both
 --> Generic Collections
 System.Collections.Generic;
 
-List, Dictionary
+List, Dictionary, Set   <- Generics
+ArrayList, Hashtable, Stack, Queue  <- Non generics
+
+
+-> SortedList is somewhat better than SortedDictionary
 
 
 

@@ -5,8 +5,11 @@
 //
 // public class List
 // {
-//     // public static void Main(string[] args)
-//     // {   
+//     
+//     
+//     
+//     public static void Main(string[] args)
+//     {   
 //         // Declaration
 //         // List<T> ls = new List<T>();
 //         // List<string> ls = new List<string>();
@@ -22,19 +25,19 @@
 //         // Count
 //         // Index- ls[0]
 //         // Capacity : If given then okay...Else take space 2,4,8,16,32,64, ... <--- JUST LIKE VECTOR
-//
+//     
 //         ls.Capacity = 5;
 //         ls.Add("Hello");
 //         ls.Add("Yash");
 //         ls.Add("How Are You?");
 //         ls.Add("How Are You?");
 //         // ls.Add("How Are You?");
-//
+//     
 //         ls.Insert(2, "Boy");
 //         ls.Sort();
 //         
 //         
-//
+//     
 //         // string[] arr = ls.ToArray();
 //         // var arr = ls.ToArray();
 //         //
@@ -46,7 +49,7 @@
 //         // {
 //         //     Console.WriteLine(item);
 //         // }
-//
+//     
 //         // Console.WriteLine(ls.Count);
 //         
 //         // if(ls.Contains("Yastrh")) Console.WriteLine("Yesss!");

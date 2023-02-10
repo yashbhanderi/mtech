@@ -6,6 +6,10 @@
 // // A SortedList object internally maintains two arrays to store the elements of the list,
 // // i.e, one array for the keys and another array for the associated values.
 // // Soretd order, By def Ascending 
+
+//      👉In SortedList, the elements are stored in a continuous block in memory.
+//    👉  In SortedDictionary, the elements are stored in separate object that can spread all over the heap.
+
 //
 // public class SortedLists
 // {
