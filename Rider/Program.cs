@@ -47,12 +47,17 @@
 //             // User u2 = new User() {name="Kent Clarke"};
 //             // User u3 = new User() {name="Robert Downey"};
 //
-//             var d = new Database<User>();
-//             d.AddData(new User() {name="Yash Bhanderi"});
-//             d.AddData(new User() {name="Kent Clarke"});
-//             d.AddData(new User() {name="Robert Downey"});
-//             
-//             d.GetData();
+//             // var d = new Database<User>();
+//             // d.AddData(new User() {name="Yash Bhanderi"});
+//             // d.AddData(new User() {name="Kent Clarke"});
+//             // d.AddData(new User() {name="Robert Downey"});
+//             //
+//             // d.GetData();
+//
+//             var x = 10;
+//             x = 9;
+//
+//             Console.WriteLine(x);
 //         }
 //     }
 // }

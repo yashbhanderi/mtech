@@ -24,7 +24,7 @@
 //             // This can't possible
 //             // int var3 = var4;      
 
-//             // We have to speciify data type to compiler
+//             // We have to specify data type to compiler
 //             // 10.9 ---->  10 (Lossy Conversion)
 //             int var3 = (int)var4;      
 //             Console.WriteLine(var3);    

@@ -8,7 +8,21 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.0.123" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.2" />
+      <PackageReference Include="MySql.Data" Version="8.0.32" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="C#\Practical1\obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="C#\Practical1\obj\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="C#\Practical1\obj\**" />
     </ItemGroup>
 
 </Project>
