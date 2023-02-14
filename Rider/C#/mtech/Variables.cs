@@ -13,7 +13,7 @@
 //             const variables
 
 //             5) readonly
-//             same like const...But can intitalize after declaration in the constructor
+//             same like const...But can initialize after declaration in the constructor
 //             Can't modified after initialization
 
 //             6) implicitly typed variables
@@ -24,7 +24,6 @@
 //             C# 3.0
 //             it can only use as local scope variables
 //             It has to intitialize during declaration only
-//             and after intitalize, can't modify
 
 //             7) dynamic variables
 

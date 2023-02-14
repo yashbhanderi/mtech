@@ -11,6 +11,8 @@
       <PackageReference Include="Dapper" Version="2.0.123" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.2" />
       <PackageReference Include="MySql.Data" Version="8.0.32" />
+      <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+      <PackageReference Include="Z.Dapper.Plus" Version="4.0.39" />
     </ItemGroup>
 
     <ItemGroup>
