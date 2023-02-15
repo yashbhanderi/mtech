@@ -67,22 +67,25 @@ public class Final
         }
 
         Console.WriteLine("\n\nCompleted Migrations: ");
-        foreach (var item in completed)
-        {
-            Console.Write(item + " ");
-        }
+        Console.WriteLine(Global.MigrationStatus.Count(item=>item.Value==1));
+        // foreach (var item in completed)
+        // {
+        //     Console.Write(item + " ");
+        // }
 
         Console.WriteLine("\n\nOngoing Migrations: ");
-        foreach (var item in ongoing)
-        {
-            Console.Write(item + " ");
-        }
+        Console.WriteLine(Global.MigrationStatus.Count(item=>item.Value==2));
+        // foreach (var item in ongoing)
+        // {
+        //     Console.Write(item + " ");
+        // }
 
         Console.WriteLine("\n\nCancelled Migrations: ");
-        foreach (var item in cancelled)
-        {
-            Console.Write(item + " ");
-        }
+        Console.WriteLine(Global.MigrationStatus.Count(item=>item.Value==0));
+        // foreach (var item in cancelled)
+        // {
+        //     Console.Write(item + " ");
+        // }
 
         Console.WriteLine("\n");
     }
@@ -91,30 +94,35 @@ public class Final
     {
         // Fetch data from database
         var data = FetchData(startId, endId);
+        var lst = data.ToList();
 
-        for (var i = 0; i < data.Length; i++)
+        foreach (var item in lst.Chunk(100))
         {
-            Global.MigrationStatus[data[i].sid] = 2;
-            if (token.IsCancellationRequested)
+            List<Destination> dataBatch = new();
+            foreach (var it in item)
             {
-                for (int curr = i; curr < data.Length; curr++)
+                // Global.MigrationStatus[it.sid] = 2;
+                if (token.IsCancellationRequested)
                 {
-                    Global.MigrationStatus[data[curr].sid] = 0;
-                }
+                    for (int curr = it.sid; curr <= endId; curr++)
+                    {
+                        Global.MigrationStatus[curr] = 0;
+                    }
 
-                Console.WriteLine("Migration Cancelled...!");
-                return;
+                    Console.WriteLine("Migration Cancelled...!");
+                    return;
+                }
+                
+                dataBatch.Add(it);
+
+                // update to status to completed
+                Global.MigrationStatus[it.sid] = 1;
             }
 
-            int sid = data[i].sid, id = data[i].id, sum = data[i].sum;
+            await Task.Delay(1000);
 
             // Save data into destination table
-            SaveData(sid, sum, id);
-
-            await Task.Delay(2000);
-
-            // update to status to completed
-            Global.MigrationStatus[data[i].sid] = 1;
+            SaveData(dataBatch);
         }
     }
 
@@ -138,7 +146,7 @@ public class Final
             data[i++] = new Destination
             {
                 id = id + ++Global.q,
-                sum = firstNumber + secondNumber,
+                sum = AddNumber(firstNumber, secondNumber),
                 sid = id
             };
             Global.MigrationStatus[id] = 2;
@@ -147,13 +155,21 @@ public class Final
         return data;
     }
 
-    private static void SaveData(int sid, int sum, int id)
+    private static int AddNumber(int firstNumber, int secondNumber)
+    {
+        
+        return firstNumber + secondNumber;
+    }
+
+    private static void SaveData(List<Destination> dataBatch)
     {
         var conn = Connection.SqlConnection;
         conn.Open();
 
-        var sql = "insert into destination_table values(@id, @sum, @sid);";
-        conn.Query(sql, new { id, sum, sid });
+        // var sql = "insert into destination_table values(@id, @sum, @sid);";
+        // conn.Query(sql, new { id, sum, sid });
+        DapperPlusManager.Entity<Destination>().Table("destination_table");
+        conn.BulkInsert(dataBatch);
         conn.Close();
     }
 }
