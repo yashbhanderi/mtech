@@ -1,7 +1,7 @@
 /.vscode
 /.idea
 /.vs
-./packages
+/Rider/packages/
 /Rider/C#/Practical1/obj/
 /Rider.sln
 /Rider.sln.DotSettings.user
