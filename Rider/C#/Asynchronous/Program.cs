@@ -1,2 +1,1 @@
-﻿Console.WriteLine("Hello World\n");
-Console.ReadLine
+﻿// Console.WriteLine("Hello World\n");

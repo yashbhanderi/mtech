@@ -14,17 +14,5 @@
       <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
       <PackageReference Include="Z.Dapper.Plus" Version="4.0.39" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Compile Remove="C#\Practical1\obj\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="C#\Practical1\obj\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="C#\Practical1\obj\**" />
-    </ItemGroup>
-
+    
 </Project>
