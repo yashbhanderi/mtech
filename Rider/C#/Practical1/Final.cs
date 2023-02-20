@@ -1,4 +1,3 @@
-// using System.Threading.Tasks;
 // using Dapper;
 // using Z.Dapper.Plus;
 //
@@ -15,7 +14,7 @@
 //
 //     public static class Global
 //     {
-//         public static Dictionary<int, int> MigrationStatus = new();
+//         public static readonly Dictionary<int, int> MigrationStatus = new();
 //         public static int q = 1;
 //     }
 //
@@ -26,7 +25,7 @@
 //         var startId = Convert.ToInt32(Console.ReadLine());
 //         var endId = Convert.ToInt32(Console.ReadLine());
 //
-//         // Use to give the signal to start/cancel the migration
+//         // Use to give the signal to cancel the migration
 //         var token = new CancellationTokenSource();
 //
 //         // Start and run the migration of data in background
@@ -39,11 +38,9 @@
 //             if (input == "cancel")
 //             {
 //                 token.Cancel();
-//                 // break;
 //             }
 //             else if (input == "status")
 //             {
-//                 // Console.WriteLine("status");
 //                 GetMigrationStatus();
 //             }
 //             else if (input == "exit")
@@ -52,56 +49,18 @@
 //             }
 //         }
 //     }
-//
-//     private static void GetMigrationStatus()
-//     {
-//         List<int> completed = new();
-//         List<int> ongoing = new();
-//         List<int> cancelled = new();
-//
-//         foreach (var key in Global.MigrationStatus.Keys)
-//         {
-//             if (Global.MigrationStatus[key] == 1) completed.Add(key);
-//             else if (Global.MigrationStatus[key] == 0) cancelled.Add(key);
-//             else ongoing.Add(key);
-//         }
-//
-//         Console.WriteLine("\n\nCompleted Migrations: ");
-//         Console.WriteLine(Global.MigrationStatus.Count(item=>item.Value==1));
-//         // foreach (var item in completed)
-//         // {
-//         //     Console.Write(item + " ");
-//         // }
-//
-//         Console.WriteLine("\n\nOngoing Migrations: ");
-//         Console.WriteLine(Global.MigrationStatus.Count(item=>item.Value==2));
-//         // foreach (var item in ongoing)
-//         // {
-//         //     Console.Write(item + " ");
-//         // }
-//
-//         Console.WriteLine("\n\nCancelled Migrations: ");
-//         Console.WriteLine(Global.MigrationStatus.Count(item=>item.Value==0));
-//         // foreach (var item in cancelled)
-//         // {
-//         //     Console.Write(item + " ");
-//         // }
-//
-//         Console.WriteLine("\n");
-//     }
-//
+//     
 //     private static async void MigrateData(int startId, int endId, CancellationTokenSource token)
 //     {
 //         // Fetch data from database
 //         var data = FetchData(startId, endId);
-//         var lst = data.ToList();
+//         var lst = data.ToList();    // To use Chunk Method
 //
 //         foreach (var item in lst.Chunk(100))
 //         {
 //             List<Destination> dataBatch = new();
 //             foreach (var it in item)
 //             {
-//                 // Global.MigrationStatus[it.sid] = 2;
 //                 if (token.IsCancellationRequested)
 //                 {
 //                     for (int curr = it.sid; curr <= endId; curr++)
@@ -126,13 +85,27 @@
 //         }
 //     }
 //
+//     private static void GetMigrationStatus()
+//     {
+//         Console.WriteLine("\nCompleted Migrations: ");
+//         Console.WriteLine(Global.MigrationStatus.Count(item=>item.Value==1));
+//
+//         Console.WriteLine("\nOngoing Migrations: ");
+//         Console.WriteLine(Global.MigrationStatus.Count(item=>item.Value==2));
+//
+//         Console.WriteLine("\nCancelled Migrations: ");
+//         Console.WriteLine(Global.MigrationStatus.Count(item=>item.Value==0));
+//
+//         Console.WriteLine();
+//     }
+//
 //     private static Destination[] FetchData(int startId, int endId)
 //     {
 //         var conn = Connection.SqlConnection;
 //         conn.Open();
 //
 //         var sql = $"select * from source_table where id between {startId} and {endId};";
-//         var dataset = conn.Query(sql);
+//         var dataset = conn.Query(sql);  // <-- Whole dataset from startID to endID
 //         conn.Close();
 //
 //         var i = 0;
@@ -157,7 +130,6 @@
 //
 //     private static int AddNumber(int firstNumber, int secondNumber)
 //     {
-//         
 //         return firstNumber + secondNumber;
 //     }
 //

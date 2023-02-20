@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Rider\\Rider\\Rider\\C#\\Practical1\\Practical1.csproj",
-      "projectName": "Practical1",
-      "projectPath": "D:\\Rider\\Rider\\Rider\\C#\\Practical1\\Practical1.csproj",
+      "projectUniqueName": "D:\\Rider\\Rider\\Rider\\C#\\ExceptionHandling\\ExceptionHandling.csproj",
+      "projectName": "ExceptionHandling",
+      "projectPath": "D:\\Rider\\Rider\\Rider\\C#\\ExceptionHandling\\ExceptionHandling.csproj",
       "packagesPath": "C:\\Users\\Yash Bhanderi\\.nuget\\packages\\",
-      "outputPath": "D:\\Rider\\Rider\\Rider\\C#\\Practical1\\obj\\",
+      "outputPath": "D:\\Rider\\Rider\\Rider\\C#\\ExceptionHandling\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Yash Bhanderi\\AppData\\Roaming\\NuGet\\NuGet.Config",
