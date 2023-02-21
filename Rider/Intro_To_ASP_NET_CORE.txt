@@ -1,0 +1,101 @@
+
+🟨 AST .NET
+-> released in 2002
+-> Used for many things, web, server, etc.
+-> as time goes on => things are getting difficult in server and client side 
+
+-> To compete with other frameworks
+
+=> 🟨 2009
+-> ASP.NET MVC is released just like Django, Spring and RoR ( MVC Structure )
+-> But... It is only works on Windows Platform
+
+=> 🟨 June, 2016
+
+-> Modern, Effiecient, Cross-Platform ( Works on Windows, Linux, MacOs )
+-> ASP .NET Core is born!
+
+=> Upto This point, .NET Framework is used for frameworks and libraries, all dependant on that
+
+-> ⚡ But  For -> ASP.net core => .NET Core => is comes into picture
+
+Web Framework               asp.net core                asp.net | asp.net mvc
+
+.net platform               .net core                     .net framework
+
+Operating System      Windows | Linux | MacOs                 Windows
+
+
+
+👉 Features of ASP.NET Core
+
+Cross-platform support: ASP.NET Core supports multiple platforms such as Windows, Linux, and macOS, 
+enabling developers to create web applications that can run on any platform.
+
+Modular and lightweight architecture: ASP.NET Core is built on a modular and lightweight architecture 
+that allows developers to use only the components they need for their applications, reducing the overall application size 
+and improving performance.
+
+High performance: ASP.NET Core is designed for high performance, and it achieves this through various optimizations
+ such as native code compilation, asynchronous programming, and in-memory caching.
+
+Dependency injection: ASP.NET Core includes a built-in dependency injection system that makes it easy for developers 
+to manage and inject dependencies into their applications.
+
+Unified programming model: ASP.NET Core provides a unified programming model that supports both MVC and Web API development.
+ This allows developers to build web applications that can serve both web pages and APIs from the same codebase.
+
+Security: ASP.NET Core includes various security features such as built-in support for HTTPS, anti-forgery tokens, and authentication 
+and authorization middleware that make it easy to secure web applications.
+
+Open-source and community-driven: ASP.NET Core is an open-source project, 
+and its development is driven by a large community of developers and contributors. 
+This ensures that the framework is constantly evolving and improving.
+
+
+
+➡️ 
+
+=> IIS <- server for ASP.NET
+=> Kestral <- server for ASP.NET Core
+
+=> With the previous version of ASP.NET, IIS is tightly coupled with the application.
+
+=> The hosting model in ASP.NET Core is simpler; IIS hands off the request to a self-hosted
+web server in the ASP.NET Core application and receives the response, but has no deeper
+knowledge of the application.
+
+=> The web server is responsible for receiving HTTP requests and generating responses.
+In the previous version of ASP.NET, IIS took this role, but in ASP.NET Core, Kestrel is
+the web server.
+
+
+➡️ Why Need of Server ? 
+
+(as asp.net core can host on any server like IIS, Kestrel, Apache, Nginx)
+
+ASP.NET Core is a server-side web application framework, which means that it runs on a computer (a server) and responds to requests from web browsers. 
+When you open a web page in your browser, the browser sends a request to the server, and the server responds by sending the web page back to the browser.
+
+Now, ASP.NET Core is a framework that helps developers build web applications that can run on a server. 
+But in order for those web applications to be accessible to web browsers, 
+they need to be hosted on a server that is connected to the internet.
+
+Think of it like a pizza shop. The pizza shop is where the pizzas are made (like how ASP.NET Core is where the web application is built),
+ but in order for people to be able to order and eat the pizzas, 
+ the shop needs to be open and accessible (like how the web application needs to be hosted on a server).
+
+So, when you build a web application using ASP.NET Core,
+ you need to find a server to host it on. 
+ This server needs to be connected to the internet and be configured to run the ASP.NET Core application.
+  Once the application is hosted on the server, people can access it through their web browsers by typing in the server's address.
+  
+  
+➡️ When to use which server?
+👉 Kestrel is a fast and lightweight web server that is great for development environments
+ because it can handle HTTP traffic quickly and efficiently. Developers can use it to test and debug their applications and make sure they are functioning correctly.
+
+👉 However, in production environments, it's often necessary to use a more robust server like IIS or Apache
+ to handle the additional services that are needed, such as load balancing, SSL termination, or other non-HTTP traffic.
+ These servers have more advanced features and are better equipped to handle the demands of a production environment
+  where high availability and reliability are important.
